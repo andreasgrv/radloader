@@ -387,7 +387,7 @@ class EdIEDoc(base.Document):
             # Some sentences are not to be processed - this is flagged by proc
             process = sent_tag.get('proc', None)
             # Unless we set proc_all, only process proc='yes' sentences.
-            if process == 'yes' or proc_all:
+            if process == 'yes' or (proc_all and process == 'no'):
                 sent = defaultdict(lambda: [])
                 for word_tag in sent_tag.iter(EdIEDoc.XML_WORD):
                     # Ignore tokens that are errors / dataset irregularities
